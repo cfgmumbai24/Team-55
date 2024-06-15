@@ -31,7 +31,7 @@ app.use(cors());
 
 // Routes
 app.use("/api/", userRoutes);
-app.use("/api/volunteer/", volRoutes);
+app.use("/api/volunteers/", volRoutes);
 app.use("/api/beneficiary/", beneficiaryRoutes);
 app.use("/api/assignments/", assignRoutes);
 
