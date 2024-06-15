@@ -2,17 +2,21 @@ const Volunteer = require("../models/voluntermodel");
 
 const getvolunteer = async (req, res) => {
   try {
-    const user = Volunteer.find({});
+    const volunteers = await Volunteer.find({})
+      .populate("user") // Populate if you need user details
+      .populate("beneficiary") // Populate if you need beneficiary details
+      .populate("assignment"); // Populate if you need assignment details
+
     res.status(201).json({
       success: true,
-      message: "successfully fetched the volunteer data",
-      volunteers: user,
+      message: "Successfully fetched the volunteer data",
+      volunteers,
     });
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      success: true,
-      message: "error while voultneer fetching",
+      success: false,
+      message: "Error while fetching volunteers",
     });
   }
 };
@@ -54,6 +58,5 @@ const getVolunteerAssignment = async (req, res) => {
     });
   }
 };
-
 
 module.exports = { getvolunteer, getvolunteerbyid, getVolunteerAssignment };
