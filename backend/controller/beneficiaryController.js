@@ -1,4 +1,5 @@
 const Beneficiary = require("../models/beneficiaryModel");
+const Goat = require("../models/goatmodel");
 
 const getAllBeneficiaries = async (req, res) => {
     try{
@@ -23,11 +24,8 @@ const getBeneficiary = async (req, res) => {
 
 const createBeneficiary = async (req,res) => {
     try{
-        const beneficiary = new Beneficiary(
-            {
-                
-            }
-        )
+        const beneficiary = await Beneficiary.create(req.body);
+        res.status(200).json(beneficiary);
     }
     catch (err) {
         res.status(400).json({ error: err.message })
@@ -62,11 +60,7 @@ const updateBeneficiary = async (req, res) => {
     catch (err) {
         res.status(404).json({ error: 'No such beneficiary' });
     }
-} 
-
-const getGoats = async(req,res) => {
-
-};
+}
 
 module.exports = {
   getAllBeneficiaries,
