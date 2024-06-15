@@ -5,6 +5,10 @@ import Polls from "../poll/Polls";
 import { tabsStore } from "@/store/tabState";
 import { getCookie } from "cookies-next";
 import axios from "axios";
+import DataTable from "./Table";
+import Dashboard from "./Dashboard";
+import Beneficiary from "./Beneficiary";
+import Volunteer from "./Volunteer";
 
 const NavContainer = ({ polls }) => {
   const tab = tabsStore((state) => state.tab);
@@ -38,10 +42,12 @@ const NavContainer = ({ polls }) => {
     <div>
       <Navbar />
       <div className="grid grid-cols-[1fr,350px] px-14 py-8 main h-[calc(100vh-90px)] gap-14 overflow-scroll">
-        {tab === "Home" ? (
-          <Polls polls={polls} />
+        {tab === "Dashboard" ? (
+          <Dashboard />
+        ) : tab === "Beneficiary" ? (
+          <Beneficiary />
         ) : (
-          <Polls polls={categoryPolls} />
+          <Volunteer />
         )}
       </div>
     </div>

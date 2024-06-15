@@ -6,6 +6,7 @@ import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { pollAddStore } from "@/store/isAddPoll";
+import DataTable from "./Table";
 
 const ParentContainer = () => {
   const [polls, setPolls] = useState([]);
