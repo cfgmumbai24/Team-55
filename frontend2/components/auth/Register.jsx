@@ -39,14 +39,16 @@ const RegisterComponent = () => {
     try {
       // setLoading(true);
       const response = await axios.post(
-        "http://localhost:3002/api/signup",
+        "http://localhost:3002/api/register",
         data
       );
       if (response?.data?.status) {
+        if (data?.role?.toLowerCase() === "volunteer")
+          router.push("/volunteer/feed");
+        else router.push("/feed");
         setCookie("token", response?.data?.data?.token);
         reset();
         toast.success("Registration Successful!");
-        router.push("/feed");
         getUserDetails();
         setIsLoggedIn(true);
         // setLoading(false);
@@ -93,12 +95,12 @@ const RegisterComponent = () => {
     <motion.div
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
-      className="lg:w-[35%] w-full lg:mx-0 mx-2 lg:px-10 px-4 py-10 pb-12 rounded-xl shadow-xl"
-      style={{ backgroundColor: "rgba(45,45,45)" }}
+      className="lg:w-[35%] w-full lg:mx-0 mx-2 lg:px-10 px-4 py-10 pb-12 rounded-xl shadow-xl bg-gray-500"
+      // style={{ backgroundColor: "rgba(45,45,45)" }}
     >
       <div className="flex justify-center flex-col items-center text-white">
         <p className="text-2xl font-semibold">
-          Welcome to <span className="text-orange-300">PollVue</span> !
+          Welcome to <span className="text-orange-300">EAGL</span> !
         </p>
         <p>
           Already a member?{" "}
@@ -212,7 +214,7 @@ const RegisterComponent = () => {
         <div className="input-group w-3/4">
           <input
             id="role"
-            type="text"
+            type="text "
             required
             className="input"
             {...register("role", {

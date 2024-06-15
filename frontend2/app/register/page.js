@@ -5,7 +5,7 @@ import React from "react";
 const Register = () => {
   isLoggedIn();
   return (
-    <div className="w-screen bg-black h-screen flex justify-center items-center">
+    <div className="w-screen h-screen flex justify-center items-center">
       <RegisterComponent />
     </div>
   );
