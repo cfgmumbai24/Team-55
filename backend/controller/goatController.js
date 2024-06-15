@@ -61,5 +61,38 @@ const creategoatinfo = async (req, res) => {
     });
   }
 };
-
-module.exports = { getgoatinfo, getgoatbyid, creategoatinfo };
+const updategoatinfo = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateData = req.body;
+    const updatedGoat = await Goat.findByIdAndUpdate(id, updateData, { new: true });
+    res.status(200).json({
+      success: true,
+      message: "Successfully updated goat info",
+      goat: updatedGoat,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      message: "Error while updating goat info",
+    });
+  }
+};
+const deletegoatinfo = async (req, res) => {
+  try {
+    const { id } = req.params; 
+    await Goat.findByIdAndDelete(id);
+    res.status(200).json({
+      success: true,
+      message: "Successfully deleted goat info",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      message: "Error while deleting goat info",
+    });
+  }
+};
+module.exports = { getgoatinfo, getgoatbyid, creategoatinfo,updategoatinfo,deletegoatinfo };
