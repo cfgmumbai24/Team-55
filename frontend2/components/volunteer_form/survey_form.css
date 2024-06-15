@@ -1,0 +1,64 @@
+/* Container for the entire form */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+    width: 50%;
+    margin: 40px auto;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for each input container */
+.input-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Generic input and textarea styles */
+.input-container input,
+.input-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+/* Hover and focus effects for inputs and textareas */
+.input-container input:hover,
+.input-container input:focus,
+.input-container textarea:hover,
+.input-container textarea:focus {
+    border-color: #007BFF;
+}
+
+/* Styles for labels */
+.label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Styles for the submit button */
+.submit-button {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the submit button */
+.submit-button:hover {
+    background-color: #0056b3;
+}
