@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.get("/", getAllAssignments);
 
-router.get("/month", getMonthlyAssignments);
+router.get("/monthly", getMonthlyAssignments);
 
 module.exports = router;
