@@ -68,7 +68,7 @@ const Landing = () => {
             <Link className="btn-grad font-bold text-2xl" href="/register">
               Sign Up
             </Link>
-            <Link className="btn2-grad font-bold text-2xl" href="/feed">
+            <Link className="btn2-grad font-bold text-2xl" href="/volunteer">
               Share Your Opinion
             </Link>
           </div>
