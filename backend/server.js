@@ -2,6 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
+const volRoutes = require("./routes/volRoutes");
+const beneficiaryRoutes = require("./routes/beneficiaryRoutes");
+const assignRoutes = require("./routes/assignRoutes");
+
 require("dotenv").config();
 const cors = require("cors");
 
@@ -27,6 +31,9 @@ app.use(cors());
 
 // Routes
 app.use("/api/", userRoutes);
+app.use("/api/volunteer/", volRoutes);
+app.use("/api/beneficiary/", beneficiaryRoutes);
+app.use("/api/assignments/", assignRoutes);
 
 // Start server
 app.listen(PORT, () => {

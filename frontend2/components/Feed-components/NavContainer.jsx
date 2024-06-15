@@ -10,34 +10,9 @@ import Dashboard from "./Dashboard";
 import Beneficiary from "./Beneficiary";
 import Volunteer from "./Volunteer";
 
-const NavContainer = ({ polls }) => {
+const NavContainer = () => {
   const tab = tabsStore((state) => state.tab);
 
-  const [categoryPolls, setCategoryPolls] = useState([]);
-  // const setAllPolls = pollAddStore((state) => state.setAllPolls);
-
-  useEffect(() => {
-    const fetchPolls = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3002/api/fetchPolls/${tab}`,
-          {
-            headers: {
-              Authorization: `Bearer ${getCookie("token")}`,
-            },
-          }
-        );
-        console.log(response);
-        const { data } = response.data;
-        setCategoryPolls(data);
-        // setAllPolls(data);
-      } catch (error) {
-        console.error("Error fetching polls:", error);
-      }
-    };
-
-    fetchPolls();
-  }, [tab]);
   return (
     <div>
       <Navbar />
