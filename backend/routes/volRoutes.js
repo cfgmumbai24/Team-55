@@ -2,7 +2,7 @@ const express = require("express");
 const {
   getvolunteer,
   getvolunteerbyid,
-  getVolunteerAssignment,
+  getVolunteerAssignment
 } = require("../controller/volunteerController");
 
 const router = express.Router();

@@ -17,7 +17,7 @@ import { isLoggedInStore } from "@/store/isLoggedInUser";
 import { pollAddStore } from "@/store/isAddPoll";
 import AddPost from "./AddPost";
 
-const Sidebar = ({ polls }) => {
+const Sidebar = () => {
   const [popup, setPopup] = useState(false);
   const setTab = tabsStore((state) => state.setTab);
   const tab = tabsStore((state) => state.tab);
@@ -87,7 +87,6 @@ const Sidebar = ({ polls }) => {
           <p className="text-lg">Log out</p>
         </div>
       </div>
-      {popup && <AddPost setPopup={setPopup} closeBtn polls={polls} />}
     </div>
   );
 };

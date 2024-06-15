@@ -1,4 +1,5 @@
 const Volunteer = require("../models/voluntermodel");
+
 const getvolunteer = async (req, res) => {
   try {
     const user = Volunteer.find({});
@@ -53,5 +54,6 @@ const getVolunteerAssignment = async (req, res) => {
     });
   }
 };
+
 
 module.exports = { getvolunteer, getvolunteerbyid, getVolunteerAssignment };
