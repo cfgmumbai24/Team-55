@@ -42,11 +42,11 @@ const Landing = () => {
   };
 
   return (
-    <div className="bg-black h-full w-auto overflow-y-hidden">
+    <div className="bg-white h-full w-auto overflow-y-hidden">
       <div className="w-full flex ">
-        <div className="flex flex-1 text-white px-10 pt-48 flex-col">
+        <div className="flex flex-1 text-black px-10 pt-48 flex-col">
           <p className="text-5xl font-bold text-center text-clip">
-            Know the <span className="text-orange-300">Public Opinion</span> or
+            Know the <span className="text-blue-800">Public Opinion</span> or
             let know your opinion
           </p>
           <p className="text-xl text-center mt-10">
