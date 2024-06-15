@@ -36,17 +36,19 @@ const rows = [
 
 export default function DataTable() {
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 500, width: "100%" }}>
       <DataGrid
+        className="max-h-[90vh] md:max-h-[80vh] px-6 py-4 bg-white"
+        style={{ fontSize: "18px" }}
         rows={rows}
         columns={columns}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
+            paginationModel: { page: 0, pageSize: 7 },
           },
         }}
-        pageSizeOptions={[5, 10]}
-        checkboxSelection
+        pageSizeOptions={[7, 14]}
+        isRowSelectable={false}
       />
     </div>
   );

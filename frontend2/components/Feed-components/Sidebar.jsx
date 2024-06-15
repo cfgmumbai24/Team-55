@@ -50,20 +50,22 @@ const Sidebar = ({ polls }) => {
 
   const handleClick = (tabObj) => {
     setTab(tabObj.name);
-    router.push(tabObj.path);
+    // router.push(tabObj.path);
   };
 
   return (
-    <div className="h-screen sticky top-0 flex bg-black flex-col">
-      <p className="text-2xl text-white my-10 ml-10 font-bold">
+    <div className="h-screen sticky top-0 flex bg-white flex-col">
+      <p className="text-2xl text-black my-10 ml-10 font-bold">
         Eagl Livelihood
       </p>
       <div className="p-6 flex flex-col gap-2">
         {tabs.map((tabObj, i) => (
           <div
             key={i}
-            className={`flex gap-3 p-4 items-center transition-all hover:bg-gray-800 cursor-pointer rounded-md text-white ${
-              pathname === tabObj.path ? "bg-gray-800" : "bg-black"
+            className={`flex gap-3 p-4 text-black items-center transition-all hover:bg-gray-400 cursor-pointer rounded-md ${
+              pathname === tabObj.path
+                ? "bg-gray-500 text-white"
+                : "bg-gray-200"
             }`}
             onClick={() => handleClick(tabObj)}
           >
@@ -74,7 +76,7 @@ const Sidebar = ({ polls }) => {
       </div>
       <div className="flex flex-col gap-2 flex-1 p-6 justify-end">
         <div
-          className="flex w-full gap-3 p-4 items-center transition-all hover:bg-gray-800 text-white cursor-pointer rounded-md"
+          className="flex w-full gap-3 p-4 items-center transition-all bg-gray-200 hover:bg-gray-400 text-black cursor-pointer rounded-md"
           onClick={() => {
             deleteCookie("token");
             router.push("/login");
