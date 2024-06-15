@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const volunteerschema = mongoose.Schema({
-  currentloaction: {
+    currentlocation: {
     type: String,
     required: true,
   },
