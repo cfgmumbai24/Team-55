@@ -21,7 +21,7 @@ db.once("open", function () {
   console.log("Connected to MongoDB");
   require('./seed');
   require('./seed2')
-  //require('./seed3')
+  require('./seed3')
 });
 
 // Middleware

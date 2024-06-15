@@ -1,65 +1,116 @@
 const mongoose = require("mongoose");
 
-// Dummy data for volunteers
-const dummyVolunteers = [
+const Beneficiary = require("./models/beneficiaryModel");
+
+const dummyData3 = [
   {
-    currentLocation: "Location 1",
-    user: new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e1"), // Random ObjectId for User
-    beneficiaries: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1f1"), // Random ObjectId for Beneficiary 1
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1f2"), // Random ObjectId for Beneficiary 2
-    ],
-    assignments: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e1"), // Random ObjectId for Assignment 1
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e2"), // Random ObjectId for Assignment 2
+    name: "Alice Johnson",
+    aadhar: 123456789012,
+    gender: "Female",
+    age: 32,
+    disabled: false,
+    widowed: false,
+    goats: [
+      new mongoose.Types.ObjectId(),
+      new mongoose.Types.ObjectId(),
     ],
   },
   {
-    currentLocation: "Location 2",
-    user: new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e2"), // Random ObjectId for User
-    beneficiaries: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1f3"), // Random ObjectId for Beneficiary 3
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1f4"), // Random ObjectId for Beneficiary 4
-    ],
-    assignments: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e3"), // Random ObjectId for Assignment 3
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e4"), // Random ObjectId for Assignment 4
-    ],
-  },
-  {
-    currentLocation: "Location 3",
-    user: new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e3"), // Random ObjectId for User
-    beneficiaries: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1f5"), // Random ObjectId for Beneficiary 5
-    ],
-    assignments: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e5"), // Random ObjectId for Assignment 5
+    name: "Bob Smith",
+    aadhar: 987654321098,
+    gender: "Male",
+    age: 45,
+    disabled: true,
+    widowed: false,
+    goats: [
+      new mongoose.Types.ObjectId(),
     ],
   },
   {
-    currentLocation: "Location 4",
-    user: new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e4"),
-    beneficiaries: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1f6"),
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1f7"),
-    ],
-    assignments: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e6"),
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e7"),
+    name: "Eve Williams",
+    aadhar: 456789012345,
+    gender: "Female",
+    age: 28,
+    disabled: false,
+    widowed: false,
+    goats: [
+      new mongoose.Types.ObjectId(),
+      new mongoose.Types.ObjectId(),
+      new mongoose.Types.ObjectId(),
     ],
   },
   {
-    currentLocation: "Location 5",
-    user: new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e5"),
-    beneficiaries: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1f8"),
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1f9"),
+    name: "Charlie Brown",
+    aadhar: 111222333444,
+    gender: "Male",
+    age: 55,
+    disabled: true,
+    widowed: true,
+    goats: [],
+  },
+  {
+    name: "Grace Davis",
+    aadhar: 555666777888,
+    gender: "Female",
+    age: 40,
+    disabled: false,
+    widowed: true,
+    goats: [
+      new mongoose.Types.ObjectId(),
     ],
-    assignments: [
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e8"),
-      new mongoose.Types.ObjectId("60f6c7b1b4d1f8b5a6b1c1e9"),
+  },
+  {
+    name: "Daniel Miller",
+    aadhar: 999888777666,
+    gender: "Male",
+    age: 30,
+    disabled: false,
+    widowed: false,
+    goats: [],
+  },
+  {
+    name: "Sophia Wilson",
+    aadhar: 222333444555,
+    gender: "Female",
+    age: 42,
+    disabled: true,
+    widowed: false,
+    goats: [],
+  },
+  {
+    name: "Oliver Martinez",
+    aadhar: 777888999000,
+    gender: "Male",
+    age: 48,
+    disabled: false,
+    widowed: false,
+    goats: [
+      new mongoose.Types.ObjectId(),
+      new mongoose.Types.ObjectId(),
+    ],
+  },
+  {
+    name: "Emma Garcia",
+    aadhar: 333444555666,
+    gender: "Female",
+    age: 35,
+    disabled: true,
+    widowed: true,
+    goats: [
+      new mongoose.Types.ObjectId(),
+    ],
+  },
+  {
+    name: "James Robinson",
+    aadhar: 888999000111,
+    gender: "Male",
+    age: 50,
+    disabled: false,
+    widowed: false,
+    goats: [
+      new mongoose.Types.ObjectId(),
     ],
   },
 ];
 
-module.exports = dummyVolunteers;
+module.exports = dummyData3;

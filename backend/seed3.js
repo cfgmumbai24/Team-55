@@ -1,17 +1,20 @@
-const mongoose = require("mongoose");
-const Volunteer = require("./models/voluntermodel"); 
-const dummyBeneficiaries = require("./dummyData3");
+const Beneficiary = require("./models/beneficiaryModel");
+const dummyData3 = require("./dummyData3");
 
-async function seedBeneficiaries() {
+async function seedBeneficiaryData() {
   try {
-    
-   await Volunteer.deleteMany({});
-    await Volunteer.insertMany(dummyBeneficiaries);
-    console.log("Dummy beneficiaries successfully inserted ");
-    mongoose.connection.close();
+    // Delete existing Beneficiary documents (if needed)
+    // Uncomment the next line if you want to delete existing data
+    // await Beneficiary.deleteMany({});
+
+    // Insert new Beneficiary documents
+    await Beneficiary.insertMany(dummyData3);
+    console.log("Beneficiary data successfully inserted");
+
+    console.log("Seed script completed");
   } catch (err) {
-    console.error("Error inserting dummy beneficiaries:", err);
+    console.error("Error seeding Beneficiary data:", err);
   }
 }
 
-seedBeneficiaries();
+seedBeneficiaryData();
