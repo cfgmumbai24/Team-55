@@ -50,20 +50,20 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "author", accessor: "author", width: "45%", align: "left" },
-      { Header: "function", accessor: "function", align: "left" },
-      { Header: "status", accessor: "status", align: "center" },
-      { Header: "employed", accessor: "employed", align: "center" },
-      { Header: "action", accessor: "action", align: "center" },
+      { Header: "Name", accessor: "author", width: "45%", align: "left" },
+      { Header: "Goat_Tag_No.", accessor: "function", align: "left" },
+      { Header: "Gender", accessor: "status", align: "center" },
+      { Header: "Age", accessor: "employed", align: "center" },
+      { Header: "Disabled", accessor: "action", align: "center" },
     ],
 
     rows: [
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        function: <Job title="Manager" description="Organization" />,
+        function: <Job title="Goat_1" description="Organization" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="online" color="success" variant="gradient" size="sm" />
+            <MDBadge badgeContent="M" color="success" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -79,10 +79,10 @@ export default function data() {
       },
       {
         author: <Author image={team3} name="Alexa Liras" email="alexa@creative-tim.com" />,
-        function: <Job title="Programator" description="Developer" />,
+        function: <Job title="Goat_2" description="Developer" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="offline" color="dark" variant="gradient" size="sm" />
+            <MDBadge badgeContent="F" color="dark" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -98,10 +98,10 @@ export default function data() {
       },
       {
         author: <Author image={team4} name="Laurent Perrier" email="laurent@creative-tim.com" />,
-        function: <Job title="Executive" description="Projects" />,
+        function: <Job title="Goat_3" description="Projects" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="online" color="success" variant="gradient" size="sm" />
+            <MDBadge badgeContent="M" color="success" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -117,10 +117,10 @@ export default function data() {
       },
       {
         author: <Author image={team3} name="Michael Levi" email="michael@creative-tim.com" />,
-        function: <Job title="Programator" description="Developer" />,
+        function: <Job title="Goat_4" description="Developer" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="online" color="success" variant="gradient" size="sm" />
+            <MDBadge badgeContent="F" color="success" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -136,10 +136,10 @@ export default function data() {
       },
       {
         author: <Author image={team3} name="Richard Gran" email="richard@creative-tim.com" />,
-        function: <Job title="Manager" description="Executive" />,
+        function: <Job title="Goat_5" description="Executive" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="offline" color="dark" variant="gradient" size="sm" />
+            <MDBadge badgeContent="F" color="dark" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -155,10 +155,10 @@ export default function data() {
       },
       {
         author: <Author image={team4} name="Miriam Eric" email="miriam@creative-tim.com" />,
-        function: <Job title="Programator" description="Developer" />,
+        function: <Job title="Goat_6" description="Developer" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="offline" color="dark" variant="gradient" size="sm" />
+            <MDBadge badgeContent="M" color="dark" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
