@@ -42,7 +42,7 @@ def get_image_metadata(file_path):
 
 def get_text_from_image(file_path):
     try:
-      image = Image.open("C:\\Users\\aayue\\OneDrive\\Desktop\\20240615_184555.jpg")
+      image = Image.open(file_path)
     except FileNotFoundError:
       print("Error: Image file not found.")
       exit()
