@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #ff8008 0%,
+    #ffc837 51%,
+    #ff8008 100%
+  );
+  transition: 0.5s;
+  background-size: 200% auto;
+  margin: 10px;
+  padding: 10px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn2-grad {
+  background-image: linear-gradient(
+    to right,
+    #00d2ff 0%,
+    #3a7bd5 51%,
+    #00d2ff 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn2-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.fixed-gradient {
+  /* Set the gradient colors */
+  background: linear-gradient(#6b21a8 80%, #8b5cf6);
+  /* Make the gradient fixed */
+  background-attachment: fixed;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+body {
+  scrollbar-width: none;
+}
+
+.main {
+  background-color: rgb(33, 33, 33);
+}
+
+.input-group {
+  position: relative;
+  background-color: inherit;
+}
+
+.input {
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border-bottom: 1px solid #c0c0c0;
+  border-radius: 4px;
+  font-size: 18px;
+  background-color: inherit;
+  color: white;
+}
+
+.placeholder {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  color: white;
+  font-size: 18px;
+  padding: 0px 5px;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.input:focus ~ .placeholder,
+.input:valid ~ .placeholder {
+  top: -12px;
+  left: 0px;
+  font-size: 12px;
+  color: white;
+  /* background: #fff; */
+}
+
+.gradient-transition {
+  background-image: linear-gradient(to right, #ff7b00, #ffa83e, #f7592d);
+  background-size: 200% 100%;
+  transition: background-position 0.5s;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #4983f6, #a578f7);
+}
+
+.gradient-transition:hover {
+  background-position: 100% 0;
+}
+
+.vote-grad{
+  background-image:linear-gradient(
+    to right,
+    #00d2ff 0%,
+    #3a7bd5 51%,
+    #00d2ff 100%
+  );
+}
