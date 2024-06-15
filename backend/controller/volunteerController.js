@@ -34,4 +34,24 @@ const getvolunteerbyid = async (req, res) => {
   }
 };
 
-module.exports = { getvolunteer, getvolunteerbyid };
+const getVolunteerAssignment = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const volunteerAssignments = Volunteer.find({ _id: id }).populate(
+      "Assignment"
+    );
+    res.status(201).json({
+      success: true,
+      message: "successfully fetched the volunteer assignment data",
+      volunteers: volunteerAssignments,
+    });
+  } catch (error) {
+    console.log(err);
+    res.status(500).json({
+      success: true,
+      message: "error while voultneer fetching",
+    });
+  }
+};
+
+module.exports = { getvolunteer, getvolunteerbyid, getVolunteerAssignment };
