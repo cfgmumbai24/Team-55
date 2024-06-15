@@ -1,18 +1,17 @@
-import ParentContainer from "@/components/Feed-components/ParentContainer";
-import DataTable from "@/components/Feed-components/Table";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import React from "react";
+"use client";
+import React from 'react'
+import { useState,useEffect } from 'react'
+import { useRouter } from 'next/router'
+import FormComponent from "@/components/volunteer_form/survey_form";
 
-const page = () => {
-  // const token = cookies().get("token")?.value;
-  // if (!token) redirect("/login");
-  // isLoggedIn();
-  return (
-    <div>
-      <ParentContainer />
-    </div>
-  );
-};
-
-export default page;
+const SurveyForm = () => {
+    
+    return (
+      <div >
+        <h1>Survey Form</h1>
+        <FormComponent />
+      </div>
+    );
+  };
+  
+  export default SurveyForm;
