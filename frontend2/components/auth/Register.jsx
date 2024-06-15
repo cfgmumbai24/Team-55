@@ -100,7 +100,7 @@ const RegisterComponent = () => {
     >
       <div className="flex justify-center flex-col items-center text-white">
         <p className="text-2xl font-semibold">
-          Welcome to <span className="text-orange-300">PollVue</span> !
+          Welcome to <span className="text-orange-300">EAGL</span> !
         </p>
         <p>
           Already a member?{" "}
@@ -214,7 +214,7 @@ const RegisterComponent = () => {
         <div className="input-group w-3/4">
           <input
             id="role"
-            type="text"
+            type="text "
             required
             className="input"
             {...register("role", {
