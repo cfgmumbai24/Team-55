@@ -39,7 +39,7 @@ const Sidebar = () => {
     () => [
       { name: "Assignments", path: "/volunteer/profile", icon: User },
       { name: "Data Collection", path: "/volunteer/tasks", icon: Briefcase },
-      { name: "Goat Report", path: "/volunteer/security", icon: Shield },
+      { name: "Survey Report", path: "/volunteer/security", icon: Shield },
     ],
     []
   );

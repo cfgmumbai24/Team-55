@@ -9,6 +9,8 @@ import DataTable from "./Table";
 import Dashboard from "./Dashboard";
 import Beneficiary from "./Beneficiary";
 import Volunteer from "./Volunteer";
+import ListAssignment from "../volunteer_assignments/List_assignment";
+import SurveyForm from "../volunteer_form/Survey_form";
 
 const NavContainer = () => {
   const tab = tabsStore((state) => state.tab);
@@ -21,9 +23,15 @@ const NavContainer = () => {
           <Dashboard />
         ) : tab === "Beneficiary" ? (
           <Beneficiary />
-        ) : (
+        ) : tab === "Assignments" ?(
+          <ListAssignment/>
+        ) :tab==="Survey Report"?
+        (
+          <SurveyForm/>
+        ):(
           <Volunteer />
-        )}
+        )
+        }
       </div>
     </div>
   );
