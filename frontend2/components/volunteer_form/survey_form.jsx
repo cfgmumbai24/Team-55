@@ -1,8 +1,6 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import "./survey_form.css";
+import React, { useState } from 'react';
 import axios from 'axios';
-// import image from './image.png';
+import "./survey_form.css";
 
 function MyForm() {
     const [formData, setFormData] = useState({
@@ -10,89 +8,105 @@ function MyForm() {
         reportOfWork: '',
         familyIncome: '',
         goatsIncreased: '',
-        image: null
+        image: null  
     });
 
     const handleInputChange = (event) => {
         const { name, value, type } = event.target;
+        console.log(event, ".....");
+
+        
         if (type === "file") {
-            setFormData(prevFormData => ({
-                ...prevFormData,
+            setFormData({
+                ...formData,
                 [name]: event.target.files[0]
-            }));
+            });
         } else {
-            setFormData(prevFormData => ({
-                ...prevFormData,
+            setFormData({
+                ...formData,
                 [name]: value
-            }));
+            });
         }
     };
 
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault();
+
+        // Create FormData object
         const data = new FormData();
+        // Append form data to FormData object
         for (const key in formData) {
             data.append(key, formData[key]);
         }
 
+        console.log("xx",data);
+
+        // Send POST request to Flask API
         axios.post('http://localhost:5000/process_image', data, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
-            .then(response => console.log(response))
-            .catch(error => alert('Error submitting form'));
+        .then(response => {
+            console.log('Form submitted successfully:', response);
+            // Add any success handling logic here
+        })
+        .catch(error => {
+            console.error('Error submitting form:', error);
+            alert('Error submitting form');
+        });
     };
 
     return (
-        <form onSubmit={handleSubmit} className="form">
-            {/* <img src={image} /> */}
-            <p className="heading">Volunteer Survey Form</p>
-            <label>Name of Beneficiary:
-                <input
-                    type="text"
-                    name="beneficiaryName"
-                    value={formData.beneficiaryName}
-                    onChange={handleInputChange}
-                />
-            </label>
-
-            <label>Upload Aadhar Card Image:
-                <input
-                    type="file"
-                    name="aadharImage"
-                    onChange={handleInputChange}
-                />
-            </label>
-
-            <label>Report of Work Done:
-                <textarea
-                    name="reportOfWork"
-                    value={formData.reportOfWork}
-                    onChange={handleInputChange}
-                />
-            </label>
-
-            <label>Family Income of Beneficiary:
-                <input
-                    type="number"
-                    name="familyIncome"
-                    value={formData.familyIncome}
-                    onChange={handleInputChange}
-                />
-            </label>
-
-            <label>Number of Goats Increased (if any):
-                <input
-                    type="number"
-                    name="goatsIncreased"
-                    value={formData.goatsIncreased}
-                    onChange={handleInputChange}
-                />
-            </label>
-
-            <button type="submit">Submit</button>
-        </form >
+        <form className="form" onSubmit={handleSubmit}>
+            < p className="heading"> Volunteer Survey Form</p>
+                <label className="label">Name of Beneficiary:
+                    <input
+                        type="text"
+                        name="beneficiaryName"
+                        value={formData.beneficiaryName}
+                        onChange={handleInputChange}
+                    />
+                </label>
+            
+            
+                <label className="label">Upload Aadhar Card Image:
+                    <input
+                        type="file"
+                        name="image"
+                        
+                        onChange={handleInputChange}
+                    />
+                </label>
+            
+                <label className="label">Report of work done:
+                    <textarea
+                        name="reportOfWork"
+                        value={formData.reportOfWork}
+                        onChange={handleInputChange}
+                    />
+                </label>
+            
+                <label className="label">Family income of the Beneficiary:
+                    <input
+                        type="number"
+                        name="familyIncome"
+                        value={formData.familyIncome}
+                        onChange={handleInputChange}
+                    />
+                </label>
+            
+                <label className="label">Number of goats increased (if any):
+                    <input
+                        type="number"
+                        name="goatsIncreased"
+                        value={formData.goatsIncreased}
+                        onChange={handleInputChange}
+                    />
+                </label>
+            
+            <button type="submit" className="submit-button">Submit</button>
+        </form>
     );
 }
 
