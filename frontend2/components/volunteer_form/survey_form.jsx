@@ -27,7 +27,7 @@ function MyForm() {
             }));
         }
     };
-
+    
     const handleSubmit = event => {
         event.preventDefault();
         const data = new FormData();

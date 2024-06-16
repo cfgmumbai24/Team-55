@@ -3,7 +3,7 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
 const columns = [
-  { field: "Beneficiary", headerName: "Beneficiary", width: 150 },
+  { field: "name", headerName: "Name", width: 100 },
   {
     field: "village",
     headerName: "Village",
@@ -17,16 +17,11 @@ const columns = [
   {
     field: "Date",
     headerName: "Date",
-    width: 150,
+    width: 100,
   },
   {
     field: "Report",
     headerName: "Report",
-    width: 200,
-  },
-  {
-    field: "Completed",
-    headerName: "Completed",
     width: 100,
   }
 ];
@@ -34,7 +29,7 @@ const rows = []
 
 export default function DataTable() {
   return (
-    <div style={{ height: 500, width: 1000  }}>
+    <div style={{ height: 500, width: "100%" }}>
       <DataGrid
         className="max-h-[90vh] md:max-h-[80vh] px-6 py-4 bg-white"
         style={{ fontSize: "18px" }}
