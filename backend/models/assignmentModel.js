@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Volunteer = require("./voluntermodel");
 
 const assignmentSchema = new mongoose.Schema({
   village: { type: String, unique: true, required: true },
@@ -8,7 +9,11 @@ const assignmentSchema = new mongoose.Schema({
   report: { type: String },
   benefeciaryId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Volunteer",
+    ref: "beneficiary",
+  },
+  volunteerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "volunteer",
   },
 });
 

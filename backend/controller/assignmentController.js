@@ -1,4 +1,5 @@
 const Assignment = require("../models/assignmentModel");
+const Beneficiary = require("../models/beneficiaryModel")
 
 const getAllAssignments = async (req, res) => {
   try{
@@ -9,6 +10,7 @@ const getAllAssignments = async (req, res) => {
       res.status(400).json({error: err.message})
   }
 };
+
 
 const getMonthlyAssignments = async (req, res) => {
     try{
@@ -48,8 +50,6 @@ const getMonthlyAssignments = async (req, res) => {
         }
         ]);
 
-        console.log("Counts:", counts);
-
         // Format the response to include year and month for the past 12 months
         const result = [];
         const currentYear = endDate.getFullYear();
@@ -70,4 +70,4 @@ const getMonthlyAssignments = async (req, res) => {
   }
 };
 
-module.exports = { getAllAssignments, getMonthlyAssignments };
+module.exports = { getAllAssignments, getMonthlyAssignments};

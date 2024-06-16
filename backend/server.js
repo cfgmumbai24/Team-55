@@ -5,6 +5,7 @@ const userRoutes = require("./routes/userRoutes");
 const volRoutes = require("./routes/volRoutes");
 const beneficiaryRoutes = require("./routes/beneficiaryRoutes");
 const assignRoutes = require("./routes/assignRoutes");
+const goatRoutes = require("./routes/goatRoutes");
 
 require("dotenv").config();
 const cors = require("cors");
@@ -19,6 +20,11 @@ mongoose.connect(MONGOURI, {
   useUnifiedTopology: true,
 });
 
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
+})
+
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
@@ -32,6 +38,7 @@ app.use(cors());
 // Routes
 app.use("/api/", userRoutes);
 app.use("/api/volunteer/", volRoutes);
+app.use("/api/goats/", goatRoutes);
 app.use("/api/beneficiary/", beneficiaryRoutes);
 app.use("/api/assignments/", assignRoutes);
 

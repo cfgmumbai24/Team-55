@@ -24,10 +24,13 @@ const goatschema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  date: {
-    type: Number,
+  sellingdate: {
+    type: Date,
     required: true,
   },
+  motalitydate: {
+    type: Date
+  }
 });
 const Goat = mongoose.model("Goat", goatschema);
 module.exports = Goat;
