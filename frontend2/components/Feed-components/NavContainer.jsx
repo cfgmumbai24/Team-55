@@ -32,9 +32,9 @@ const NavContainer = () => {
           <SurveyForm />
         ) : tab === "Data Collection" ? (
           <Dataform />
-        ) : (
+        ) : tab === "Volunteer" ? (
           <Volunteer />
-        )}
+        ) : null}
       </div>
     </div>
   );
