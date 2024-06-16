@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Beneficiary = require("./models/beneficiaryModel");
 require("dotenv").config();
+
 const seedBeneficiaries = async () => {
   try {
     const sampleBeneficiaryIds = [
@@ -110,7 +111,7 @@ const seedBeneficiaries = async () => {
       {
         _id: sampleBeneficiaryIds[9],
         name: "Beneficiary 10",
-        aadhar: 123456789012,
+        aadhar: 987654321098,
         gender: "Female",
         age: 30,
         disabled: true,
@@ -120,7 +121,6 @@ const seedBeneficiaries = async () => {
     ];
 
     await Beneficiary.deleteMany({});
-
     await Beneficiary.insertMany(beneficiaryData);
 
     console.log("Beneficiary data seeded successfully!");

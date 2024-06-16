@@ -31,6 +31,19 @@ const seedAssignments = async () => {
       new mongoose.Types.ObjectId("60d5ec49a809333b8ca37bba"),
     ];
 
+    const sampleUserIds = [
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37ab1"),
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37ab2"),
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37ab3"),
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37ab4"),
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37ab5"),
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37ab6"),
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37ab7"),
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37ab8"),
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37ab9"),
+      new mongoose.Types.ObjectId("60d5ec49a809333b8ca37aba"),
+    ];
+
     const assignmentData = [
       {
         _id: sampleAssignmentIds[0],
@@ -40,6 +53,7 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Completed successfully",
         beneficiaryId: sampleBeneficiaryIds[0],
+        volunteerId: sampleUserIds[0], // Adding volunteerId
       },
       {
         _id: sampleAssignmentIds[1],
@@ -49,6 +63,7 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Incomplete",
         beneficiaryId: sampleBeneficiaryIds[1],
+        volunteerId: sampleUserIds[1],
       },
       {
         _id: sampleAssignmentIds[2],
@@ -58,6 +73,7 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Completed with some issues",
         beneficiaryId: sampleBeneficiaryIds[2],
+        volunteerId: sampleUserIds[2],
       },
       {
         _id: sampleAssignmentIds[3],
@@ -67,6 +83,7 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Not completed",
         beneficiaryId: sampleBeneficiaryIds[3],
+        volunteerId: sampleUserIds[3],
       },
       {
         _id: sampleAssignmentIds[4],
@@ -76,6 +93,7 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Completed successfully",
         beneficiaryId: sampleBeneficiaryIds[4],
+        volunteerId: sampleUserIds[4],
       },
       {
         _id: sampleAssignmentIds[5],
@@ -85,6 +103,7 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Failed to complete",
         beneficiaryId: sampleBeneficiaryIds[5],
+        volunteerId: sampleUserIds[5],
       },
       {
         _id: sampleAssignmentIds[6],
@@ -94,6 +113,7 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Completed with modifications",
         beneficiaryId: sampleBeneficiaryIds[6],
+        volunteerId: sampleUserIds[6],
       },
       {
         _id: sampleAssignmentIds[7],
@@ -103,6 +123,7 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Incomplete due to weather conditions",
         beneficiaryId: sampleBeneficiaryIds[7],
+        volunteerId: sampleUserIds[7],
       },
       {
         _id: sampleAssignmentIds[8],
@@ -112,6 +133,7 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Completed with extra efforts",
         beneficiaryId: sampleBeneficiaryIds[8],
+        volunteerId: sampleUserIds[8],
       },
       {
         _id: sampleAssignmentIds[9],
@@ -121,12 +143,14 @@ const seedAssignments = async () => {
         date: new Date(),
         report: "Incomplete due to equipment failure",
         beneficiaryId: sampleBeneficiaryIds[9],
+        volunteerId: sampleUserIds[9],
       },
     ];
 
     await Assignment.deleteMany({});
     await Assignment.insertMany(assignmentData);
 
+    console.log("Assignments have been successfully seeded!");
     process.exit();
   } catch (err) {
     console.error("Error seeding assignment data:", err);

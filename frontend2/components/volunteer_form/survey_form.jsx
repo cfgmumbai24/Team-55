@@ -4,6 +4,7 @@ import "./survey_form.css";
 
 function MyForm() {
   const [formData, setFormData] = useState({
+    assignmentNo: "",
     beneficiaryName: "",
     reportOfWork: "",
     familyIncome: "",
@@ -66,6 +67,15 @@ function MyForm() {
           type="text"
           name="beneficiaryName"
           value={formData.beneficiaryName}
+          onChange={handleInputChange}
+        />
+      </label>
+      <label className="label">
+        Assignment No:
+        <input
+          type="text"
+          name="assignmentNo"
+          value={formData.assignmentNo}
           onChange={handleInputChange}
         />
       </label>

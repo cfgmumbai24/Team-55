@@ -76,7 +76,7 @@ const Sidebar = () => {
       </div>
       <div className="flex flex-col gap-2 flex-1 p-6 justify-end">
         <div
-          className="flex w-full gap-3 p-4 items-center transition-all bg-gray-200 hover:bg-gray-400 text-black cursor-pointer rounded-md"
+          className="flex w-full gap-3 p-4 items-center btn-grad  transition-all duration-300 text-black cursor-pointer rounded-md"
           onClick={() => {
             deleteCookie("token");
             router.push("/login");

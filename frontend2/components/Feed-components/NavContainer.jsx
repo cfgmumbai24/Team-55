@@ -9,11 +9,10 @@ import DataTable from "./Table";
 import Dashboard from "./Dashboard";
 import Beneficiary from "./Beneficiary";
 import Volunteer from "./Volunteer";
-import ListAssignment from "../volunteer_assignments/list_assignment";
-import SurveyForm from "../volunteer_form/survey_form";
-import ListAssignment from "../volunteer_assignments/List_assignment";
-import SurveyForm from "../volunteer_form/Survey_form";
+// import ListAssignment from "../volunteer_assignments/list_assignment";
+// import ListAssignment from "../volunteer_assignments/List_assignment";
 import Dataform from "../volunteer_data_collection/Data_collection";
+import MyForm from "../volunteer_form/survey_form";
 
 const NavContainer = () => {
   const tab = tabsStore((state) => state.tab);
@@ -29,7 +28,7 @@ const NavContainer = () => {
         ) : tab === "Assignments" ? (
           <ListAssignment />
         ) : tab === "Survey Report" ? (
-          <SurveyForm />
+          <MyForm />
         ) : tab === "Data Collection" ? (
           <Dataform />
         ) : tab === "Volunteer" ? (

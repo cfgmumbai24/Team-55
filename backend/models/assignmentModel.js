@@ -6,9 +6,13 @@ const assignmentSchema = new mongoose.Schema({
   completed: { type: Boolean },
   date: { type: Date, required: true },
   report: { type: String },
-  benefeciaryId: {
+  beneficiaryId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Volunteer",
+    ref: "Beneficiary",
+  },
+  volunteerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "volunteer",
   },
 });
 
