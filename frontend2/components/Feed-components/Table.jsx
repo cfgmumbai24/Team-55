@@ -2,11 +2,12 @@
 
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First Name", width: 130 },
-  { field: "lastName", headerName: "Last Name", width: 130 },
+  { field: "userName", headerName: "First Name", width: 130 },
   { field: "currentLocation", headerName: "Current Location", width: 160 },
   {
     field: "numBeneficiaries",
@@ -23,12 +24,12 @@ const columns = [
 ];
 
 export default function DataTable({ data }) {
+  const router = useRouter();
   // Transform data to match DataGrid row structure
   const rows = data?.map((volunteer, index) => ({
     id: volunteer._id,
-    firstName: volunteer.user?.firstName || "N/A", // Adjust field based on your User schema
-    lastName: volunteer.user?.lastName || "N/A", // Adjust field based on your User schema
-    currentLocation: volunteer.currentloaction,
+    userName: volunteer.user?.username || "N/A", // Adjust field based on your User schema
+    currentLocation: volunteer.currentlocation,
     numBeneficiaries: volunteer.beneficiary?.length,
     numAssignments: volunteer.assignment?.length,
   }));
@@ -46,7 +47,12 @@ export default function DataTable({ data }) {
           },
         }}
         pageSizeOptions={[7, 14]}
-        isRowSelectable={false}
+        disableSelectionOnClick // Optionally disable row selection on click
+        onRowClick={(params) => {
+          const volunteerId = params.row.id;
+          // Navigate to dynamic volunteer page
+          router.push(`/singleVol/${volunteerId}`);
+        }}
       />
     </div>
   );

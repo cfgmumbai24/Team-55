@@ -27,9 +27,9 @@ const NavContainer = () => {
           <ListAssignment />
         ) : tab === "Survey Report" ? (
           <SurveyForm />
-        ) : (
+        ) : tab === "Volunteer" ? (
           <Volunteer />
-        )}
+        ) : null}
       </div>
     </div>
   );
