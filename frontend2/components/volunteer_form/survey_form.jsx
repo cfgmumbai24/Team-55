@@ -1,99 +1,114 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
 import "./survey_form.css";
-import axios from 'axios';
-// import image from './image.png';
 
 function MyForm() {
-    const [formData, setFormData] = useState({
-        beneficiaryName: '',
-        reportOfWork: '',
-        familyIncome: '',
-        goatsIncreased: '',
-        image: null
-    });
+  const [formData, setFormData] = useState({
+    beneficiaryName: "",
+    reportOfWork: "",
+    familyIncome: "",
+    goatsIncreased: "",
+    image: null,
+  });
 
-    const handleInputChange = (event) => {
-        const { name, value, type } = event.target;
-        if (type === "file") {
-            setFormData(prevFormData => ({
-                ...prevFormData,
-                [name]: event.target.files[0]
-            }));
-        } else {
-            setFormData(prevFormData => ({
-                ...prevFormData,
-                [name]: value
-            }));
-        }
-    };
-    
-    const handleSubmit = event => {
-        event.preventDefault();
-        const data = new FormData();
-        for (const key in formData) {
-            data.append(key, formData[key]);
-        }
+  const handleInputChange = (event) => {
+    const { name, value, type } = event.target;
+    console.log(event, ".....");
 
-        axios.post('http://localhost:5000/process_image', data, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        })
-            .then(response => console.log(response))
-            .catch(error => alert('Error submitting form'));
-    };
+    if (type === "file") {
+      setFormData({
+        ...formData,
+        [name]: event.target.files[0],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
 
-    return (
-        <form onSubmit={handleSubmit} className="form">
-            {/* <img src={image} /> */}
-            <p className="heading">Volunteer Survey Form</p>
-            <label>Name of Beneficiary:
-                <input
-                    type="text"
-                    name="beneficiaryName"
-                    value={formData.beneficiaryName}
-                    onChange={handleInputChange}
-                />
-            </label>
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-            <label>Upload Aadhar Card Image:
-                <input
-                    type="file"
-                    name="aadharImage"
-                    onChange={handleInputChange}
-                />
-            </label>
+    // Create FormData object
+    const data = new FormData();
+    // Append form data to FormData object
+    for (const key in formData) {
+      data.append(key, formData[key]);
+    }
 
-            <label>Report of Work Done:
-                <textarea
-                    name="reportOfWork"
-                    value={formData.reportOfWork}
-                    onChange={handleInputChange}
-                />
-            </label>
+    console.log("xx", data);
 
-            <label>Family Income of Beneficiary:
-                <input
-                    type="number"
-                    name="familyIncome"
-                    value={formData.familyIncome}
-                    onChange={handleInputChange}
-                />
-            </label>
+    // Send POST request to Flask API
+    axios
+      .post("http://localhost:5000/process_image", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log("Form submitted successfully:", response);
+        // Add any success handling logic here
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+        alert("Error submitting form");
+      });
+  };
 
-            <label>Number of Goats Increased (if any):
-                <input
-                    type="number"
-                    name="goatsIncreased"
-                    value={formData.goatsIncreased}
-                    onChange={handleInputChange}
-                />
-            </label>
+  return (
+    <form className="form" onSubmit={handleSubmit}>
+      <p className="heading"> Volunteer Survey Form</p>
+      <label className="label">
+        Name of Beneficiary:
+        <input
+          type="text"
+          name="beneficiaryName"
+          value={formData.beneficiaryName}
+          onChange={handleInputChange}
+        />
+      </label>
 
-            <button type="submit">Submit</button>
-        </form >
-    );
+      <label className="label">
+        Upload Aadhar Card Image:
+        <input type="file" name="image" onChange={handleInputChange} />
+      </label>
+
+      <label className="label">
+        Report of work done:
+        <textarea
+          name="reportOfWork"
+          value={formData.reportOfWork}
+          onChange={handleInputChange}
+        />
+      </label>
+
+      <label className="label">
+        Family income of the Beneficiary:
+        <input
+          type="number"
+          name="familyIncome"
+          value={formData.familyIncome}
+          onChange={handleInputChange}
+        />
+      </label>
+
+      <label className="label">
+        Number of goats increased (if any):
+        <input
+          type="number"
+          name="goatsIncreased"
+          value={formData.goatsIncreased}
+          onChange={handleInputChange}
+        />
+      </label>
+
+      <button type="submit" className="submit-button">
+        Submit
+      </button>
+    </form>
+  );
 }
 
 export default MyForm;

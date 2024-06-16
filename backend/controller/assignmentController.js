@@ -2,20 +2,19 @@ const Assignment = require("../models/assignmentModel");
 const Beneficiary = require("../models/beneficiaryModel")
 
 const getAllAssignments = async (req, res) => {
-  try{
-      const assignments = await Assignment.find();
-      res.status(200).json(assignments);
-  }
-  catch(err){
-      res.status(400).json({error: err.message})
+  try {
+    const assignments = await Assignment.find();
+    res.status(200).json(assignments);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
   }
 };
 
 
 const getMonthlyAssignments = async (req, res) => {
-    try{
-        const startOfYear = new Date(new Date().getFullYear(), 0, 1);
-        const endOfYear = new Date(new Date().getFullYear() + 1, 0, 1);
+  try {
+    const startOfYear = new Date(new Date().getFullYear(), 0, 1);
+    const endOfYear = new Date(new Date().getFullYear() + 1, 0, 1);
 
         const endDate = new Date();
         const startDate = new Date();
@@ -63,10 +62,10 @@ const getMonthlyAssignments = async (req, res) => {
         result.unshift({ year, month, count });
         }
 
-        res.status(200).json(result);
-    } catch (error) {
-        console.error("Error fetching monthly assignments:", error);
-        res.status(500).json({ error: "Internal Server Error" });
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("Error fetching monthly assignments:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 

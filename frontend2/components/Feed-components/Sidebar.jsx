@@ -58,11 +58,11 @@ const Sidebar = () => {
       <p className="text-2xl text-black my-10 ml-10 font-bold">
         Eagl Livelihood
       </p>
-      <div className="p-6 flex flex-col gap-2">
+      <div className="p-6 flex flex-col gap-6">
         {tabs.map((tabObj, i) => (
           <div
             key={i}
-            className={`flex gap-3 p-4 text-black items-center transition-all hover:bg-gray-400 cursor-pointer rounded-md ${
+            className={`flex gap-3 p-4 px-6 text-black items-center transition-all hover:bg-gray-400 cursor-pointer rounded-md ${
               pathname === tabObj.path
                 ? "bg-gray-500 text-white"
                 : "bg-gray-200"
