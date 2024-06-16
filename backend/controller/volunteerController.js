@@ -1,4 +1,5 @@
 const Volunteer = require("../models/voluntermodel");
+const Assignments = require("../models/assignmentModel");
 
 const getvolunteer = async (req, res) => {
   try {
@@ -66,4 +67,47 @@ const getVolunteerAssignment = async (req, res) => {
   }
 };
 
-module.exports = { getvolunteer, getvolunteerbyid, getVolunteerAssignment };
+const getVolunteerAttendanceDates = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Fetch the volunteer and populate the assignments
+    const volunteer = await Volunteer.findById(id).populate("assignment");
+
+    if (!volunteer) {
+      return res.status(404).json({
+        success: false,
+        message: "Volunteer not found",
+      });
+    }
+
+    // Filter assignments with completed = true
+    const completedAssignments = volunteer.assignment.filter(
+      (assignment) => assignment.completed === true
+    );
+
+    // Extract the dates from the completed assignments
+    const assignmentDates = completedAssignments.map(
+      (assignment) => assignment.date
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Successfully fetched the volunteer assignment data",
+      assignmentDates,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error while fetching volunteer assignment data",
+    });
+  }
+};
+
+module.exports = {
+  getvolunteer,
+  getvolunteerbyid,
+  getVolunteerAssignment,
+  getVolunteerAttendanceDates,
+};

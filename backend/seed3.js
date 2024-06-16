@@ -9,9 +9,6 @@ async function seedBeneficiaryData() {
 
     // Insert new Beneficiary documents
     await Beneficiary.insertMany(dummyData3);
-    console.log("Beneficiary data successfully inserted");
-
-    console.log("Seed script completed");
   } catch (err) {
     console.error("Error seeding Beneficiary data:", err);
   }

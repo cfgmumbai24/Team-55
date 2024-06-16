@@ -127,7 +127,6 @@ const seedAssignments = async () => {
     await Assignment.deleteMany({});
     await Assignment.insertMany(assignmentData);
 
-    console.log("Assignment data seeded successfully!");
     process.exit();
   } catch (err) {
     console.error("Error seeding assignment data:", err);
