@@ -48,7 +48,7 @@ export default function DataTable({ data }) {
 
     try {
       const response = await axios.get(
-        `http://localhost:3002/api/volunteers/${volunteerId}`
+        `http://localhost:3002/api/volunteer/${volunteerId}`
       );
       const result = await response.data;
 
@@ -67,7 +67,14 @@ export default function DataTable({ data }) {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        width: "100%",
+      }}
+    >
       <div style={{ flex: "1 0 50%", marginBottom: "20px" }}>
         <DataGrid
           className="max-h-[90vh] md:max-h-[80vh] px-6 py-4 bg-white"

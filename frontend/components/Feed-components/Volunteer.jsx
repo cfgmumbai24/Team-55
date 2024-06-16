@@ -12,9 +12,7 @@ const Volunteer = () => {
     // Fetch data from API
     const fetchVolunteers = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3002/api/volunteers"
-        ); // Update with your API endpoint
+        const response = await axios.get("http://localhost:3002/api/volunteer"); // Update with your API endpoint
         setVolunteers(response.data.volunteers);
         setLoading(false);
       } catch (error) {
