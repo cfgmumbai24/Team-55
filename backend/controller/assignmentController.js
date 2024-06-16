@@ -1,4 +1,5 @@
 const Assignment = require("../models/assignmentModel");
+const Beneficiary = require("../models/beneficiaryModel")
 
 const getAllAssignments = async (req, res) => {
   try {
@@ -9,41 +10,57 @@ const getAllAssignments = async (req, res) => {
   }
 };
 
+
 const getMonthlyAssignments = async (req, res) => {
   try {
     const startOfYear = new Date(new Date().getFullYear(), 0, 1);
     const endOfYear = new Date(new Date().getFullYear() + 1, 0, 1);
 
-    // Perform the aggregation to count assignments per month
-    const counts = await Assignment.aggregate([
-      {
-        $match: {
-          date: {
-            $gte: startOfYear,
-            $lt: endOfYear,
-          },
-        },
-      },
-      {
-        $group: {
-          _id: { $month: "$date" },
-          count: { $sum: 1 },
-        },
-      },
-      {
-        $sort: { _id: 1 },
-      },
-    ]);
+        const endDate = new Date();
+        const startDate = new Date();
+        startDate.setMonth(startDate.getMonth() - 11);
+        startDate.setDate(1);
+        endDate.setMonth(endDate.getMonth() + 1);
+        endDate.setDate(0);
 
-    // Format the response to ensure all months are represented
-    const result = Array.from({ length: 12 }, (_, i) => ({
-      month: i + 1,
-      count: 0,
-    }));
+        const counts = await Assignment.aggregate([
+        {
+            $match: {
+            date: {
+                $gte: startDate,
+                $lt: endDate
+            }
+            }
+        },
+        {
+            $group: {
+            _id: {
+                year: { $year: "$date" },
+                month: { $month: "$date" }
+            },
+            count: { $sum: 1 }
+            }
+        },
+        {
+            $sort: {
+            "_id.year": 1,
+            "_id.month": 1
+            }
+        }
+        ]);
 
-    counts.forEach((item) => {
-      result[item._id - 1].count = item.count;
-    });
+        // Format the response to include year and month for the past 12 months
+        const result = [];
+        const currentYear = endDate.getFullYear();
+        const currentMonth = endDate.getMonth() + 1;
+
+        for (let i = 0; i < 12; i++) {
+        const date = new Date(currentYear, currentMonth - 1 - i, 1);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const count = counts.find(item => item._id.year === year && item._id.month === month)?.count || 0;
+        result.unshift({ year, month, count });
+        }
 
     res.status(200).json(result);
   } catch (error) {
@@ -52,4 +69,4 @@ const getMonthlyAssignments = async (req, res) => {
   }
 };
 
-module.exports = { getAllAssignments, getMonthlyAssignments };
+module.exports = { getAllAssignments, getMonthlyAssignments};

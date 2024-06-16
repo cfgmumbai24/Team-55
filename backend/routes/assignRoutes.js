@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-    getAllAssignments, getMonthlyAssignments
+    getAllAssignments, getMonthlyAssignments,
 } = require("../controller/assignmentController");
 
 const router = express.Router();

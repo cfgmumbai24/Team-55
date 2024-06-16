@@ -28,10 +28,8 @@ const goatschema = mongoose.Schema({
     type: Date,
     required: true,
   },
-  motalitydate:
-  {
-    type:Date,
-    required:true
+  motalitydate: {
+    type: Date
   }
 });
 const Goat = mongoose.model("Goat", goatschema);
